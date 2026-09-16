@@ -9,6 +9,7 @@ import { ParaBankAccountApi } from '../api/ParaBankAccountApi';
 import { TransferFundsPage } from '../pages/TransferFundsPage';
 import { FindTransactionsPage } from '../pages/FindTransactionsPage';
 import { ParaBankRegistrationApi } from '../api/ParaBankRegistrationApi';
+import { Transaction } from '../types/Transaction';
 
 test('Register a new ParaBank user', async ({ page, request }) => {
   const user = generateUserData();
@@ -111,6 +112,7 @@ const totalTransfers = transferDebits.reduce(
 console.log('Total transfer deductions:', totalTransfers);
 expect(totalTransfers).toBe(184.49);
 });
+
 test('Scenario C - API transaction flow', async ({ request }) => {
   const registrationApi = new ParaBankRegistrationApi(request);
   const accountApi = new ParaBankAccountApi(request);
@@ -146,7 +148,7 @@ test('Scenario C - API transaction flow', async ({ request }) => {
 
   await accountApi.deposit(account.id, 500);
 
-  const transactions =
+  const transactions: Transaction[] =
     await accountApi.getTransactions(account.id);
 
   console.log('Transactions:', transactions);
