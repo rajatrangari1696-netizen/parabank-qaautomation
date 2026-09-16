@@ -48,6 +48,7 @@ Install the project dependencies:
 npm install
 npx playwright install
 
+```
 ## Running Tests
 
 Run the complete test suite:
