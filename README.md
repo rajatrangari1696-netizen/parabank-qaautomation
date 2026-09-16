@@ -39,6 +39,7 @@ ImmverseAI_QA_Assignment/
 ├── package.json
 ├── package-lock.json
 └── playwright.config.ts
+```
 ## Installation
 
 Install the project dependencies:
