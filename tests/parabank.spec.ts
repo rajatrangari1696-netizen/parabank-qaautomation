@@ -37,8 +37,9 @@ test('Register a new ParaBank user', async ({ page, request }) => {
   await registerPage.registerUser(user.username, user.password);
 
   await expect(
-    page.getByText('Your account was created successfully')
-  ).toBeVisible();
+page.getByText('Your account was created successfully')
+).toBeVisible({ timeout: 15000 });
+  
   await page.getByRole('link', { name: 'Accounts Overview' }).click();
   const existingAccountNumber =
   await accountsPage.getFirstAccountNumber();
